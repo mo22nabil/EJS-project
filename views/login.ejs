@@ -1,0 +1,45 @@
+<%- include ('./shared/header.ejs') %> 
+<form action="/login" method="POST" class="w-75 m-auto p-5">
+  <% if (emailExist==true) { %>
+    <div class="alert alert-danger my-2">
+      in-valid email account
+
+  </div>  
+  <% } %>
+  <% if (wrongPassword == true) { %>
+    <div class="alert alert-danger my-2">
+       email and password mismatch
+
+  </div>  
+  <% } %>
+  <% if (catchError == true) { %>
+    <div class="alert alert-danger my-2">
+      server error
+  </div>  
+  <% } %>
+
+  <div class="form-group">
+    <input type="email" class="form-control" value="<%= oldInputs?.email %>" placeholder="email" name="email" aria-describedby="emailHelp">
+  </div>
+  <% if (validationErr?.includes('email')) { %>
+    <div class="alert alert-danger my-2">
+      in-valid email
+  </div>  
+  <% } %>
+  <div class="form-group">
+    <input type="password" class="form-control" value="<%= oldInputs?.password %>" placeholder="password" name="password">
+  </div>
+  <% if (validationErr?.includes('password')) { %>
+    <div class="alert alert-danger my-2">
+      in-valid password
+  </div>  
+  <% } %>
+ 
+    
+    <button type="submit" class="btn btn-primary">sign in</button>
+    <div class="text-centre">
+      Dont have account ? 
+      <a href="/">signUp now</a>
+    </div>
+</form>
+<%- include ('./shared/footer.ejs') %> 

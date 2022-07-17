@@ -1,0 +1,17 @@
+<%- include ('./shared/header.ejs') %> 
+
+<form class="m-auto w-75 py-5" method="POST" action="/post/<%= post._id %> " enctype="multipart/form-data">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="title" value="<%= post.title %>" name="title" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="description" value="<%= post.desc %>" name="desc">
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control" placeholder="image" value="<%= post.imageURL %>" name="image">
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+<%- include ('./shared/footer.ejs') %> 

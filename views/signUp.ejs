@@ -1,0 +1,53 @@
+<%- include ('./shared/header.ejs') %> 
+<form action="/signup" method="POST" class="w-75 m-auto p-5">
+  <% if (emailExist==true) { %>
+    <div class="alert alert-danger my-2">
+      email already exist
+  </div>  
+  <% } %>
+  <% if (catchError == true) { %>
+    <div class="alert alert-danger my-2">
+      server error
+  </div>  
+  <% } %>
+  <div class="form-group">
+    <input type="text" class="form-control" value="<%= oldInputs?.userName %>" placeholder="userName" name="userName">
+  </div>
+  <% if (validationErr?.includes('userName')) { %>
+    <div class="alert alert-danger my-2">
+      in-valid UserName
+  </div>  
+  <% } %>
+  <div class="form-group">
+    <input type="email" class="form-control" value="<%= oldInputs?.email %>" placeholder="email" name="email" aria-describedby="emailHelp">
+  </div>
+  <% if (validationErr?.includes('email')) { %>
+    <div class="alert alert-danger my-2">
+      in-valid email
+  </div>  
+  <% } %>
+  <div class="form-group">
+    <input type="password" class="form-control" value="<%= oldInputs?.password %>" placeholder="password" name="password">
+  </div>
+  <% if (validationErr?.includes('password')) { %>
+    <div class="alert alert-danger my-2">
+      in-valid password
+  </div>  
+  <% } %>
+  <div class="form-group">
+    <input type="password" class="form-control" value="<%= oldInputs?.cPassword %>" placeholder="confirmation password" name="cPassword">
+  </div>
+  <% if (validationErr?.includes('cPassword')) { %>
+    <div class="alert alert-danger my-2">
+      in-valid c password             
+  </div>  
+  <% } %>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br>
+    <div class="text-centre">
+      Already have account ? 
+      <a href="/login">login now</a>
+    </div>
+  </form>
+<%- include ('./shared/footer.ejs') %> 

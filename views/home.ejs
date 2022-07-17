@@ -1,0 +1,34 @@
+<%- include ('./shared/header.ejs') %> 
+
+<form class="m-auto w-75 py-5" method="POST" action="/post" enctype="multipart/form-data">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="title" value="" name="title" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="description" value="" name="desc">
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control" placeholder="image" value="" name="image">
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+<div class="container">
+    <div class="row">
+        <% for( let i = 0; i < postList.length; i++ ) { %>
+            <div class="col-md-4">
+                <img src="<%= postList[i].imageURL %>" class="card-img-top " alt="image">
+                <div class="card m-auto" style="width: 100%;">
+                    <div class="card-body">
+                    <h5 class="card-title"><%= postList[i].title %> </h5>
+                    <p class="card-text"><%= postList[i].desc %></p>
+                    <a href="post/<%= postList[i]._id %>" class="btn btn-primary">update</a>
+                    <a href="post/delete/<%= postList[i]._id %>" class="btn btn-danger">delete</a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+<%- include ('./shared/footer.ejs') %> 
